@@ -23,8 +23,8 @@
     <groupId>structure</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-	<groupId>com.falcontech.gradeit</groupId>
-	<artifactId>GradeItWebApp</artifactId>
+	<groupId>com.falcontech.console</groupId>
+	<artifactId>ConsoleAdministration</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 		<!-- TODO project name  -->

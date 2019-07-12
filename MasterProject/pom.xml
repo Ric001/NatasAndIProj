@@ -72,7 +72,7 @@
     </pluginManagement>
   </build>
   <modules>
+    <module>ConsoleAdministration</module>
     <module>GradeItWebApp</module>
-    <module>FeedBackApp</module>
   </modules>
 </project>

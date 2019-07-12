@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-	<display-name>GradeItWebApp</display-name>
+	<display-name>ConsoleAdministration</display-name>
 
 	<!--
 		There are three means to configure Wickets configuration mode and they 
@@ -17,16 +17,16 @@
 		"deployment". If no configuration is found, "development" is the default. -->
 
 	<filter>
-		<filter-name>wicket.GradeItWebApp</filter-name>
+		<filter-name>wicket.ConsoleAdministration</filter-name>
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>com.falcontech.gradeit.WicketApplication</param-value>
+			<param-value>com.falcontech.console.WicketApplication</param-value>
 		</init-param>
 	</filter>
 
 	<filter-mapping>
-		<filter-name>wicket.GradeItWebApp</filter-name>
+		<filter-name>wicket.ConsoleAdministration</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 </web-app>
