@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
 
+import com.falcontech.gradeit.models.Career;
+import com.falcontech.gradeit.models.Pensum;
+import com.falcontech.gradeit.models.Subject;
 import com.falcontech.gradeit.models.University;
 
 public class MySQLDAO implements IDAO {
@@ -31,18 +34,32 @@ public class MySQLDAO implements IDAO {
         
         final List<University> universities = new ArrayList<>();
         try {
-            connectorManager.connect().prepareCall(storedProcedure);
+            stpCaller = connectorManager.connect().prepareCall(storedProcedure);
             if (callProcedure() && Objects.nonNull(resultSet))
-                while (resultSet.next())
-                    universities.add(new University());
+                mapResultSet(universities);
+            closeResources();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.info(e.getMessage());
         }
         
         LOG.info("[RETURNING FROM listUniversites(): List<University>]");
         return Collections.unmodifiableList(universities);
     }
+    private void mapResultSet(List<University> colleges) throws SQLException {
+        LOG.info("[ENTERING mapResultSet(List<Unviersity> unviersity): boolean]");
+        
+        University university = null;
+        Career career = null;
+        Pensum pensum = null;
+        List<Subject> subjects = null;
 
+        while(resultSet.next()) {
+            university = new University();
+            colleges.add(university);
+        }
+
+        LOG.info("[ENDING mapResultSet(List<University> unviersity): boolean]");
+    }
     @Override
     public boolean closeResources() {
         LOG.info("[ENTER closeResources(): boolean]");
@@ -74,8 +91,9 @@ public class MySQLDAO implements IDAO {
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
+        
     }
 
     @Override

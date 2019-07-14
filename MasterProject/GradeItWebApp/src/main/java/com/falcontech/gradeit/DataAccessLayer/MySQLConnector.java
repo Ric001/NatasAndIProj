@@ -18,7 +18,7 @@ public class MySQLConnector implements ISinggleConnector {
         return connection;
     }
 
-    public static ISinggleConnector connector() {
+    public synchronized static ISinggleConnector connector() {
         if (Objects.isNull(connector))
             connector = new MySQLConnector();
         return connector;
